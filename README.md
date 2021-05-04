@@ -1,10 +1,6 @@
-# Empty HTML5 Canvas Project
+# Duchampesque art
 
-I got bored of creating a new document every time.
-
-Contains all the needed files to create a new HTML5 page with a JS canvas inside.
-
-Just clone the repo or download the last release.
+If he could, why can't I?
 
 ## Credits
 

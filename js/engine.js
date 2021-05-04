@@ -57,7 +57,7 @@ class Engine {
     this._frameRate = this._fpsBuffer.reduce((a, b) => a + b, 0) / this._fpsBuffer.length;
   }
 
-  _calculate_press_coords(e) {
+  calculate_press_coords(e) {
     // calculate size ratio
     const boundingBox = this._canvas.getBoundingClientRect();
     const ratio = Math.min(boundingBox.width, boundingBox.height) / this._canvas.getAttribute("width");
