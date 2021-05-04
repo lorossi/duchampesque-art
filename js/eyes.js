@@ -14,6 +14,7 @@ class Eye {
     ctx.save();
     ctx.translate(this._x, this._y);
 
+    // outer part
     ctx.fillStyle = "rgb(250, 250, 250)";
     ctx.strokeStyle = "rgb(15, 15, 15)";
     ctx.lineWidth = 6 / 100 * this._r;
@@ -26,6 +27,7 @@ class Eye {
     ctx.rotate(this._theta);
     ctx.translate(this._iris_distance, 0);
 
+    // inner part
     ctx.fillStyle = "rgb(15, 15, 15)";
     ctx.beginPath();
     ctx.arc(0, 0, this._iris_radius, 0, Math.PI * 2);
