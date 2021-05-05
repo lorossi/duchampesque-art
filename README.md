@@ -10,7 +10,7 @@ In my opinion that's a very controversial artistic style, because it's often see
 
 However, Duchamp is remembered as a very prolific artist. One of his most famous works is *L.H.O.O.Q.* (often known as *The Mona Lisa with mustaches*), a photo of Mona Lisa with mustaches on her *enigmatic* face.
 
-![L.H.O.O.Q.](LQHOOQ.jpg)
+![L.H.O.O.Q.](img/LQHOOQ.jpg)
 
 ## My (weekly) obsession
 
