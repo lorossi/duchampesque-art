@@ -26,6 +26,14 @@ Well, my dear imaginary reader, click the link and find out by yourself. Or scro
 
 ## Try it here [lorenzoros.si/duchampesque-art](https://lorenzoros.si/duchampesque-art)
 
+## I explained the why, but how?
+
+This whole page works thanks to the canvas element. I draw over it using Javascript, without using any external library (except for the boilerplate that I made for my own projects and you can get [here](https://github.com/lorossi/empty-html5-canvas-project)).
+
+I hardcoded the position of the eyes in the script that loads the image. Later on, the *real* position of the eyes (the one accounting for canvas margin and image resizing) is calculated and the eyes are stitched over the painting. This gives me a lof of flexibility: **if I want to add a new painting, I just need to download the image, measure the position and the radius of each eye and update a few lines of script.**. It's as easy as that.
+
+When the mouse is moved, the script updates and calculates the angle between the center of the eyes and the mouse position (relative to the canvas itself). Then the eyes are rotated and displayed as such in the next frame.
+
 ## Output
 
 **WIP** stay tuned
