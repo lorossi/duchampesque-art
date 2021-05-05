@@ -51,10 +51,11 @@ class Sketch extends Engine {
     // keep track of the current painting
     this._current_painting = 0;
     // automatic movement
-    this._auto = false;
+    this._auto = true;
     // recording related variables
     this._recording = false;
     this._duration = 600;
+    this._eyes_rotations = 2;
     // some advertising
     console.clear();
     console.log("%c Snooping around? Check the repo! https://github.com/lorossi/duchampesque-art", "color: rgb(220, 220, 220); font-size: 1rem");
@@ -64,6 +65,8 @@ class Sketch extends Engine {
     // stop looping until the final image is loaded
     this._loaded = false;
     this.noLoop();
+
+    this._center = { x: 0, y: 0 };
 
     // load image and calculate its aspect ratio
     this._image = await this._loadImage(this._paintings[this._current_painting].path);
@@ -84,7 +87,13 @@ class Sketch extends Engine {
       // append to eyes array
       const new_eye = new Eye(e_x, e_y, e_r);
       this._eyes.push(new_eye);
+      // calculate eyes average positon
+      this._center.x += e_x;
+      this._center.y += e_y;
     });
+    this._center.x /= this._eyes.length;
+    this._center.y /= this._eyes.length;
+    this._rho = this.width / 4;
 
     this._loaded = true;
     this.loop();
@@ -111,10 +120,11 @@ class Sketch extends Engine {
     if (this._auto) {
       // time related constants
       const percent = (this.frameCount % this._duration) / this._duration;
-      const time_theta = percent * Math.PI * 2 * 10;
+      const time_theta = percent * Math.PI * 2 * this._eyes_rotations;
       // actual coords
-      const x = this.width / 2 * Math.cos(time_theta) + this.width / 2;
-      const y = this.height / 2 * Math.sin(time_theta) + this.height / 2;
+      const rho = this._rho * Math.cos(2 * time_theta);
+      const x = rho * Math.cos(time_theta) * random(0.9, 1.1) + this._center.x;
+      const y = rho * Math.sin(time_theta) * random(0.9, 1.1) + this._center.y;
       this._eyes.forEach(e => e.move(x, y));
     }
 
@@ -175,4 +185,18 @@ const shuffle_array = arr => {
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
+};
+
+const random = (a, b) => {
+  if (a == undefined && b == undefined) return random(0, 1);
+  else if (b == undefined) return random(0, a);
+  else if (a != undefined && b != undefined) return Math.random() * (b - a) + a;
+};
+
+const distSq = (x1, y1, x2, y2) => {
+  return Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
+};
+
+const dist = (x1, y1, x2, y2) => {
+  return Math.sqrt(distSq(x1, y1, x2, y2));
 };
