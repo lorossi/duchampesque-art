@@ -48,8 +48,8 @@ class Sketch extends Engine {
         ]
       },
     ];
-
-    this._current_painting = 5;
+    shuffle_array(this._paintings);
+    this._current_painting = 0;
   }
 
   async setup() {
@@ -121,3 +121,10 @@ class Sketch extends Engine {
     });
   }
 }
+
+const shuffle_array = arr => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+};
