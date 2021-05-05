@@ -42,13 +42,18 @@ a:visited, a:active {
 
 .footer {
   position: absolute;
-  width: 100vw;
-  bottom: 1vh;
+  width: 100vh;
+  left: calc(99vw - 2rem);
+
+  font-size: 2rem;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+
+  transform-origin: top left;
+  transform: rotate(-90deg);
 }
 
 @media only screen and (max-width: 600px) {
@@ -62,6 +67,10 @@ a:visited, a:active {
   }
 
   .footer {
-    justify-content: center;
+    transform: none;
+    width: 100vw;
+    bottom: 2vh;
+    left: initial;
+    font-size: 1rem;
   }
 }

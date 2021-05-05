@@ -1,6 +1,5 @@
 class Sketch extends Engine {
   preload() {
-
     // list of paintings path and pixel coords and radius of the eys
     this._paintings = [
       {
@@ -49,12 +48,22 @@ class Sketch extends Engine {
       },
     ];
     shuffle_array(this._paintings);
+    // keep track of the current painting
     this._current_painting = 0;
+    // automatic movement
+    this._auto = false;
+    // recording related variables
+    this._recording = false;
+    this._duration = 600;
+    // some advertising
+    console.clear();
+    console.log("%c Snooping around? Check the repo! https://github.com/lorossi/duchampesque-art", "color: rgb(220, 220, 220); font-size: 1rem");
   }
 
   async setup() {
     // stop looping until the final image is loaded
     this._loaded = false;
+    this.noLoop();
 
     // load image and calculate its aspect ratio
     this._image = await this._loadImage(this._paintings[this._current_painting].path);
@@ -78,11 +87,36 @@ class Sketch extends Engine {
     });
 
     this._loaded = true;
+    this.loop();
+
+    // setup capturer
+    if (this._recording) {
+      this._capturer = new CCapture({ format: "png" });
+      this._capturer_started = false;
+    }
   }
 
   draw() {
     // wait until the image is loaded
     if (!this._loaded) return;
+
+    // setup capturer
+    if (!this._capturer_started && this._recording) {
+      this._capturer_started = true;
+      this._capturer.start();
+      console.log("%c Recording started", "color: green; font-size: 1rem");
+    }
+
+    // movement calculation  
+    if (this._auto) {
+      // time related constants
+      const percent = (this.frameCount % this._duration) / this._duration;
+      const time_theta = percent * Math.PI * 2 * 10;
+      // actual coords
+      const x = this.width / 2 * Math.cos(time_theta) + this.width / 2;
+      const y = this.height / 2 * Math.sin(time_theta) + this.height / 2;
+      this._eyes.forEach(e => e.move(x, y));
+    }
 
     this.ctx.save();
     // clear background
@@ -93,9 +127,23 @@ class Sketch extends Engine {
     // show eyes
     this._eyes.forEach(e => e.show(this.ctx));
     this.ctx.restore();
+
+    // record
+    if (this._recording) {
+      if (this.frameCount < this._duration) {
+        this._capturer.capture(this._canvas);
+      } else {
+        this._recording = false;
+        this._capturer.stop();
+        this._capturer.save();
+        console.log("%c Recording ended", "color: red; font-size: 1rem");
+      }
+    }
   }
 
   mousemove(e) {
+    // return if image is not loaded yet
+    if (!this._loaded || this._auto) return;
     // update eyesight position
     const coords = this.calculate_press_coords(e);
     this._eyes.forEach(e => e.move(coords.x, coords.y));
