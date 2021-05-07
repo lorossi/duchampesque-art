@@ -26,7 +26,6 @@ I hear you asking *why are you telling me this?*
 
 Well, my dear imaginary reader, click the link and find out by yourself. Or scroll and see below some low quality rendered gifs. Or check my [Instagram profile](https://instagram.com/lorossi), where you can also find some of my other projects.
 
-
 ## I explained the why, but how?
 
 This whole page works thanks to the canvas element. I draw over it using Javascript, without using any external library (except for the boilerplate that I made for my own projects and you can get [here](https://github.com/lorossi/empty-html5-canvas-project)).
