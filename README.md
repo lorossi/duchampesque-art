@@ -22,7 +22,7 @@ I bought a 700-pack of them and I always keep them in my pockets, ready to be st
 
 I hear you asking *why are you telling me this?*
 
-Well, my dear imaginary reader, click the link and find out by yourself. Or scroll and see below. Or check my [Instagram profile](https://instagram.com/lorossi).
+Well, my dear imaginary reader, click the link and find out by yourself. Or scroll and see below some low quality rendered gifs. Or check my [Instagram profile](https://instagram.com/lorossi), where you can also find some of my other projects.
 
 ## Try it here [lorenzoros.si/duchampesque-art](https://lorenzoros.si/duchampesque-art)
 
@@ -36,7 +36,12 @@ When the mouse is moved, the script updates and calculates the angle between the
 
 ## Output
 
-**WIP** stay tuned
+![american-gothic](output/gifs/american-gothic.gif)
+![mona-lisa](output/gifs/mona-lisa.gif)
+![pearl-earring](output/gifs/pearl-earring.gif)
+![scream](output/gifs/scream.gif)
+![self-portrait](output/gifs/self-portrait.gif)
+![vertumno](output/gifs/vertumno.gif)
 
 ## Credits
 
