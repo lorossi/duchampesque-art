@@ -51,11 +51,11 @@ class Sketch extends Engine {
     // keep track of the current painting
     this._current_painting = 0;
     // automatic movement
-    this._auto = true;
+    this._auto = false;
     // recording related variables
     this._recording = false;
     this._duration = 600;
-    this._eyes_rotations = 2;
+    this._eyes_rotations = 3;
     // some advertising
     console.clear();
     console.log("%c Snooping around? Check the repo! https://github.com/lorossi/duchampesque-art", "color: rgb(220, 220, 220); font-size: 1rem");
@@ -120,11 +120,14 @@ class Sketch extends Engine {
     if (this._auto) {
       // time related constants
       const percent = (this.frameCount % this._duration) / this._duration;
-      const time_theta = percent * Math.PI * 2 * this._eyes_rotations;
+      const eased = ease(percent);
+      const time_theta = eased * Math.PI * 2 * this._eyes_rotations + Math.PI / 2;
       // actual coords
-      const rho = this._rho * Math.cos(2 * time_theta);
-      const x = rho * Math.cos(time_theta) * random(0.9, 1.1) + this._center.x;
-      const y = rho * Math.sin(time_theta) * random(0.9, 1.1) + this._center.y;
+      const blend = 0.2; // the higher this value, the less the spherical the movement is
+      const rho = this.width / 2 * (blend + (1 - blend) / 2 * Math.cos(2 * time_theta));
+      const x = rho * Math.cos(time_theta) + this._center.x;
+      const y = rho * Math.sin(time_theta) + this._center.y;
+
       this._eyes.forEach(e => e.move(x, y));
     }
 
@@ -179,6 +182,8 @@ class Sketch extends Engine {
     });
   }
 }
+
+const ease = x => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
 
 const shuffle_array = arr => {
   for (let i = arr.length - 1; i > 0; i--) {
