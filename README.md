@@ -2,6 +2,8 @@
 
 ## Or how I asked myself: If he could, why can't I?
 
+## Try it here [lorenzoros.si/duchampesque-art](https://lorenzoros.si/duchampesque-art)
+
 ## What are you onto?
 
 Marcel Duchamp (1887-1968) was a French arist, mostly known for his fundamental contribute to the new *conceptual art*, whom he created. He was the leader of the *ready-made* art movement, where normal objects (ant not what before him was considered art) were taken out of their environment, modified and exposed in museums.
@@ -24,7 +26,6 @@ I hear you asking *why are you telling me this?*
 
 Well, my dear imaginary reader, click the link and find out by yourself. Or scroll and see below some low quality rendered gifs. Or check my [Instagram profile](https://instagram.com/lorossi), where you can also find some of my other projects.
 
-## Try it here [lorenzoros.si/duchampesque-art](https://lorenzoros.si/duchampesque-art)
 
 ## I explained the why, but how?
 
