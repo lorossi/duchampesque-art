@@ -87,7 +87,7 @@ class Sketch extends Engine {
       // append to eyes array
       const new_eye = new Eye(e_x, e_y, e_r);
       this._eyes.push(new_eye);
-      // calculate eyes average positon
+      // calculate eyes average position
       this._center.x += e_x;
       this._center.y += e_y;
     });
@@ -167,7 +167,7 @@ class Sketch extends Engine {
   }
 
   _next_painting() {
-    // cycle throught paintings
+    // cycle through paintings
     this._current_painting = (this._current_painting + 1) % this._paintings.length;
     this.setup();
   }
