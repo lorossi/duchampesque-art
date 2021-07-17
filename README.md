@@ -16,7 +16,7 @@ However, Duchamp is remembered as a very prolific artist. One of his most famous
 
 ## My (weekly) obsession
 
-[As I have mentioned before](https://github.com/lorossi/bauhaus-time), I life my life one obsession at the time.
+[As I have mentioned before](https://github.com/lorossi/bauhaus-time), I live my life one obsession at the time.
 
 The most recent one is *googly eyes*. They are so funny, they make everything stupid and ridicule. Due to my childish sense of humour, I cannot stop laughing when I stick one to something.
 
